@@ -30,11 +30,13 @@ Whether you’re a developer looking to build a production-ready e-commerce back
 | Database  | SQLite (default)         |
 
 ---
+
 📦 Backend (Django)
 
 The backend of the Sweet Shop Management System is developed using Django and the Django REST Framework (DRF). It provides a secure, modular, and RESTful API architecture that handles user authentication, sweet inventory management, purchasing, and stock updates. Using JWT (via SimpleJWT) for authentication ensures that only authorized users can access or modify protected resources. The backend follows Test-Driven Development (TDD), with comprehensive unit tests covering all critical endpoints and logic.
 
 ---
+
 ```bash
 git clone https://github.com/your-username/sweet-shop.git
 cd sweetshop
@@ -53,14 +55,19 @@ python manage.py runserver
 The frontend is built using React.js, providing a fast, dynamic, and user-friendly interface for the sweet shop. Styled with Tailwind CSS, the UI is clean, responsive, and easily customizable. The frontend interacts with the backend API to support user registration/login, sweet browsing, purchasing, and admin controls. It consumes the DRF API through Axios and includes real-time feedback (e.g., toast messages) for smooth user interaction.
 
 ---
+
 cd frontend
 npm install
 npm start
+
+---
 
 👑 Admin User (Optional)
 
 python manage.py createsuperuser
 Access admin dashboard at: http://localhost:8000/admin/
+
+---
 
 🔐 API Authentication (JWT)
 
@@ -71,6 +78,8 @@ Access admin dashboard at: http://localhost:8000/admin/
 
 Use JWT token in header for protected routes:
 Authorization: Bearer <access_token>
+
+---
 
 📋 API Endpoints
 
@@ -87,7 +96,7 @@ Authorization: Bearer <access_token>
 | GET    | `/sweet/in-stock/`               | View all available sweets  |
 | GET    | `/sweet/search/?name=&min=&max=` | Search sweets              |
 
-
+---
 
 
 🧪 Running Tests (TDD)
