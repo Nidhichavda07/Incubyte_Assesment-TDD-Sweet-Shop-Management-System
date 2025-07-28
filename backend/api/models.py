@@ -25,25 +25,16 @@ class Sweet(models.Model):
 
 
 class Purchase(models.Model):
-    """
-    Represents a purchase of a sweet by a user.
-    """
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='purchases')
-    sweet = models.ForeignKey(Sweet, on_delete=models.CASCADE, related_name='purchases')
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    sweet = models.ForeignKey(Sweet, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField()
-    total_price = models.DecimalField(max_digits=10, decimal_places=2, editable=False)
+    total_price = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
     purchased_at = models.DateTimeField(auto_now_add=True)
 
     def save(self, *args, **kwargs):
-        # Only calculate and reduce stock for new purchases
-        if not self.pk:
-            if self.quantity > self.sweet.stock:
-                raise ValueError(f"Only {self.sweet.stock} items left in stock.")
-            
-            self.total_price = self.sweet.price_per_kg * self.quantity
-            self.sweet.stock -= self.quantity
-            self.sweet.save()
-
+        self.total_price = self.quantity * self.sweet.price_per_kg
+        self.sweet.stock -= self.quantity
+        self.sweet.save()
         super().save(*args, **kwargs)
 
     def __str__(self):
