@@ -54,7 +54,7 @@ python manage.py runserver
 
 The frontend is built using React.js, providing a fast, dynamic, and user-friendly interface for the sweet shop. Styled with Tailwind CSS, the UI is clean, responsive, and easily customizable. The frontend interacts with the backend API to support user registration/login, sweet browsing, purchasing, and admin controls. It consumes the DRF API through Axios and includes real-time feedback (e.g., toast messages) for smooth user interaction.
 
----
+
 
 cd frontend
 npm install
@@ -62,7 +62,7 @@ npm start
 
 ---
 
-👑 Admin User (Optional)
+##👑 Admin User (Optional)
 
 python manage.py createsuperuser
 Access admin dashboard at: http://localhost:8000/admin/
@@ -81,8 +81,9 @@ Authorization: Bearer <access_token>
 
 ---
 
-📋 API Endpoints
+## 📋 API Endpoints
 
+---
 | Method | Endpoint                         | Description                |
 | ------ | -------------------------------- | -------------------------- |
 | POST   | `/sweet/add/`                    | Add new sweet (Admin only) |
